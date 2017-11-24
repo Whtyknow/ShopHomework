@@ -5,16 +5,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
+    <link href="Content/style.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
-        
-        </asp:ContentPlaceHolder>
+    <div class="header">
+        <h1>MyShop</h1>
+        <div class="topnav">             
+            <asp:LinkButton ID="LinkButtonShop" runat="server" OnClick="LinkButtonShop_Click">Shop</asp:LinkButton>     
+            <asp:LinkButton ID="LinkButtonCart" runat="server" OnClick="LinkButtonCart_Click">Cart</asp:LinkButton>      
+        </div>             
     </div>
+        <div class="row">
+            <div class="column side">
+    
+            </div>
+        <div class="column middle">        
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder" runat="server">
+        
+            </asp:ContentPlaceHolder>
+        </div>
+        </div>
+            
+        <div class="footer">
+            <p>Dmytro Khomyshyn site copyright.</p>
+        </div>
     </form>
 </body>
 </html>

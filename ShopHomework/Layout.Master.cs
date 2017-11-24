@@ -13,5 +13,15 @@ namespace ShopHomework
         {
 
         }
+
+        protected void LinkButtonCart_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("cart.aspx"); 
+        }
+
+        protected void LinkButtonShop_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("index.aspx");
+        }
     }
 }
