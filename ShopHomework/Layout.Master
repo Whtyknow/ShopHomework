@@ -5,6 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
     <link href="Content/style.css" rel="stylesheet" />
 </head>
 <body>
@@ -13,7 +14,9 @@
         <h1>MyShop</h1>
         <div class="topnav">             
             <asp:LinkButton ID="LinkButtonShop" runat="server" OnClick="LinkButtonShop_Click">Shop</asp:LinkButton>     
-            <asp:LinkButton ID="LinkButtonCart" runat="server" OnClick="LinkButtonCart_Click">Cart</asp:LinkButton>      
+            <asp:LinkButton ID="LinkButtonCart" runat="server" OnClick="LinkButtonCart_Click">
+                Cart<asp:Label runat="server" ID="labelBadge" CssClass="badge"></asp:Label>
+                    </asp:LinkButton>      
         </div>             
     </div>
         <div class="row">

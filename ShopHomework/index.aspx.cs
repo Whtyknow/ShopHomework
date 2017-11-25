@@ -1,7 +1,9 @@
-﻿using System;
+﻿using ShopHomework.Cart;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -10,7 +12,7 @@ namespace ShopHomework
 {
     public partial class index : System.Web.UI.Page
     {
-        List<Product> cart;
+        List<CartProduct> cart;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -43,23 +45,34 @@ namespace ShopHomework
         
         protected void myDataList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cart = (List<Product>)Session["Cart"];
+            cart = (List<CartProduct>)Session["Cart"];
             
             if (cart == null)
             {
-                cart = new List<Product>();
+                cart = new List<CartProduct>();
                 Session["Cart"] = cart;
             }
 
-           DataListItem item = myDataList.SelectedItem;
-                Product p = new Product()
-                {
-                    Name = ((Label)myDataList.SelectedItem.FindControl("LabelName")).Text,
-                    Price = Convert.ToInt32(((Label)myDataList.SelectedItem.FindControl("LabelPrice")).Text)
-                };
+            string name = ((Label)myDataList.SelectedItem.FindControl("LabelName")).Text;
+            CartProduct p = cart.Where(x => x.Name == name).SingleOrDefault();
+            HiddenField hiddenFieldPrice = ((HiddenField)(myDataList.SelectedItem.FindControl("hiddenFieldPrice")));
+
+            if (p == null)
+            {
+                int price = Convert.ToInt32(((Label)myDataList.SelectedItem.FindControl("LabelPrice")).Text);
+                string image = ((Image)(myDataList.SelectedItem.FindControl("productImage"))).ImageUrl;
+                p = new CartProduct() { Name = name, Price = price, Image = image, Count = 1 };
+                hiddenFieldPrice.Value = p.Price.ToString();
                 cart.Add(p);
-                      
-            
+
+                Label l = (Label)(Page.Master as Layout).FindControl("labelBadge");
+                l.Text = cart.Count.ToString();
+            }
+            else
+            {
+                p.Count++;
+                p.Price += Convert.ToInt32(hiddenFieldPrice.Value);
+            }              
         }
     }
 }

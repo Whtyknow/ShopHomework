@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShopHomework.Cart;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -14,19 +15,21 @@ namespace ShopHomework
         {
             if (!IsPostBack)
             {
-                List<Product> cart;
+                List<CartProduct> cart;
                 if (Session["Cart"] != null)
                 {
-                    cart = (List<Product>)Session["Cart"];
+                    cart = (List<CartProduct>)Session["Cart"];
 
                     DataTable dt = new DataTable("Cart");
 
+                    dt.Columns.Add("Image");
                     dt.Columns.Add("Name");
+                    dt.Columns.Add("Count");
                     dt.Columns.Add("Price");
 
-                    foreach(Product p in cart)
+                    foreach (CartProduct p in cart)
                     {
-                        dt.Rows.Add(p.Name, p.Price);
+                        dt.Rows.Add(p.Image, p.Name, p.Count, p.Price);
                     }
                     myDataListCart.DataSource = dt;
                     myDataListCart.DataBind();

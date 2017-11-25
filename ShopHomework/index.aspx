@@ -17,15 +17,17 @@
                 <br />
 
                 <asp:Label ID="LabelPrice" runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Price") %>'></asp:Label>
+                <span>usd</span>
                 <br />
 
-                <asp:Image Width="200" Height="200" id="productImage" runat="server"
+                <asp:Image Width="200" Height="200" ID="productImage" runat="server"
                    ImageUrl='<%# GetImage(Eval("Image")) %>'/>
                 <br />
 
                 <asp:Button ID="buttonAddToCart" runat="server" Text="AddToCart" CommandName="Select"/>
                 <br />                             
 
+                <asp:HiddenField runat="server" ID="hiddenFieldPrice" />
             </div>
         </ItemTemplate>
 
