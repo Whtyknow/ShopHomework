@@ -64,9 +64,9 @@ namespace ShopHomework
                 p = new CartProduct() { Name = name, Price = price, Image = image, Count = 1 };
                 hiddenFieldPrice.Value = p.Price.ToString();
                 cart.Add(p);
-
-                Label l = (Label)(Page.Master as Layout).FindControl("labelBadge");
-                l.Text = cart.Count.ToString();
+                                
+                Layout master = Page.Master as Layout;
+                master.SetBadge(cart.Count.ToString());
             }
             else
             {

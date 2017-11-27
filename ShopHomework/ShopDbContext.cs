@@ -44,9 +44,11 @@ namespace ShopHomework
             Product p1 = new Product { Name = "Samsung pm-400", Price = 400, Image = MyImage.GetByteImage(Resources.Iphone) };
             Product p2 = new Product { Name = "Iphone iph1", Price = 500, Image = MyImage.GetByteImage(Resources.Motorolla) };
             Product p3 = new Product { Name = "Motorolla vs-40", Price = 800, Image = MyImage.GetByteImage(Resources.samsung) };
+            Product p4 = new Product { Name = "Samsung pm-100", Price = 200, Image = MyImage.GetByteImage(Resources.samsung2) };
+            Product p5 = new Product { Name = "Huawei H1", Price = 800, Image = MyImage.GetByteImage(Resources.huawei) };
 
 
-            db.Products.AddRange(new Product[] { p1, p2, p3 });
+            db.Products.AddRange(new Product[] { p1, p2, p3, p4, p5 });
             db.SaveChanges();
         }
     }

@@ -24,9 +24,9 @@ namespace ShopHomework
             Response.Redirect("index.aspx");
         }
 
-        public void SetBadge(int value)
+        public void SetBadge(string value)
         {
-            labelBadge.Text = Convert.ToString(value);
+            labelBadge.Text = value;
         }
     }
 }
